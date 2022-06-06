@@ -1,0 +1,18 @@
+syntax = "proto3"; // proto版本，建议使用proto3
+option go_package = "./;main"; // 包名声明符
+
+message SearchRequestParam {
+  enum Type {
+    PC = 0;
+    Mobile = 1;
+  }
+  string query_text = 1;
+  int32 limit = 3;
+  Type type = 4;
+}
+
+message SearchResultPage {
+  repeated string result = 1;
+  int32 num_results = 2;
+}
+// protoc --gofast_out=. test.proto
